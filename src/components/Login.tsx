@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
@@ -20,6 +19,7 @@ export const Login: React.FC<LoginProps> = ({
     email: '',
     password: ''
   });
+  const [userType, setUserType] = useState<'customer' | 'trader' | 'delivery'>('customer');
 
   const getLoginText = (key: string) => {
     const translations = {
@@ -69,7 +69,7 @@ export const Login: React.FC<LoginProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate login - in real app, this would make API call
-    onLogin('customer');
+    onLogin(userType);
   };
 
   return (
@@ -94,6 +94,21 @@ export const Login: React.FC<LoginProps> = ({
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Account Type
+              </label>
+              <select
+                value={userType}
+                onChange={(e) => setUserType(e.target.value as 'customer' | 'trader' | 'delivery')}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+              >
+                <option value="customer">Customer</option>
+                <option value="trader">Trader (Dashboard Access)</option>
+                <option value="delivery">Delivery Partner</option>
+              </select>
+            </div>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 {getLoginText('email')}
