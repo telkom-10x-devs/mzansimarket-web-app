@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({ currentLanguage }) => {
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500 rounded-full filter blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-slate-800 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-green-400 rounded-full filter blur-2xl animate-bounce delay-500"></div>
-        </div
+        </div>
       </div>
       
       {/* Floating Elements */}
